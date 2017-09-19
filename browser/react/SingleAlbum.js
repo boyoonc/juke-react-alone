@@ -3,11 +3,13 @@ import React, {Component} from 'react'
 export default class SingleAlbum extends Component {
 
 	render(){
+		// const album = this.props.album
+		const {album} = this.props //same thing with ES6 object destructuring
 		return(
 			<div className="album">
 			  <div>
-			    <h3>{this.props.album.name}</h3>
-			    <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=IshouldBEanIMAGE&w=300&h=300" className="img-thumbnail" />
+			    <h3>{album.name}</h3>
+			    <img src={album.imageUrl} className="img-thumbnail" />
 			  </div>
 			  <table className='table'>
 			    <thead>
@@ -20,7 +22,7 @@ export default class SingleAlbum extends Component {
 			    </thead>
 
 			    {
-			    	this.props.album.songs.map(song => {
+			    	album.songs.map(song => {
 			    		return(
 			    			<tbody>
 						      <tr>
@@ -30,7 +32,7 @@ export default class SingleAlbum extends Component {
 						          </button>
 						        </td>
 						        <td>{song.name}</td>
-						        <td>{song.artists.join(' ')}</td>
+						        <td>{song.artists.map((artist) => artist.name).join(' ')}</td>
 						        <td>{song.genre}</td>
 						      </tr>
 						    </tbody>

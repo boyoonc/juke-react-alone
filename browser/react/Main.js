@@ -35,9 +35,10 @@ export default class Main extends Component {
 			<div>	
 				<Sidebar />
 				<div className="col-xs-10">
+					{this.state.selectedAlbum.songs ? 
+					<SingleAlbum album={this.state.selectedAlbum} /> :
 					<AllAlbums selectAlbum={this.selectAlbum} albums={this.state.albums}/>
-					{this.state.selectedAlbum.songs && 
-					<SingleAlbum album={this.state.selectedAlbum} />}
+				}
 				</div>
 				<Footer />
 			</div>
